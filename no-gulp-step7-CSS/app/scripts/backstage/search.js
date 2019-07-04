@@ -2,6 +2,7 @@ console.log('使用者查詢example1');
 $(() => {
     console.log($('#title').text(), 'yes');
 })
+//定義getData的方法
 let getData = url => fetch(url)
     .then(response => response.json())
     .then(json => {return json})
@@ -9,6 +10,7 @@ let getData = url => fetch(url)
 let deletePerson = (DOM) => {
     $(DOM).closest("tr").remove();
 }
+//指定網址，並執行getData的方法
 getData('https://jsonplaceholder.typicode.com/users').then((data) => {
     let personList = '';
     data.forEach(element => {
