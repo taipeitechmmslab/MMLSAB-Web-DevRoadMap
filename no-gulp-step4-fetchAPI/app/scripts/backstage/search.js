@@ -10,7 +10,7 @@ let getData = url =>
       return json; //回傳json
     }); 
 
-//指定網址，並執行getData的方法，
+//指定網址，並執行getData的方法
 getData("https://jsonplaceholder.typicode.com/users").then(data => {
   console.log(data);
 });
