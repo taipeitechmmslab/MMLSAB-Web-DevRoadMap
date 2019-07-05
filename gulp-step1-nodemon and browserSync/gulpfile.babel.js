@@ -17,7 +17,7 @@ gulp.task('nodemon', cb => {
     started = true;
   });
 });
-//browserSync負責監看template內的檔案並刷新瀏覽器 ※gulp 4※
+//[gulp4寫法] browserSync負責監看template內的檔案並刷新瀏覽器 
 gulp.task('browserSync', gulp.series('nodemon', () => {
   browserSync.init( null, {
     proxy: 'http://localhost:3000',
@@ -37,11 +37,12 @@ gulp.task('browserSync', gulp.series('nodemon', () => {
 //     reloadDelay: 3000
 //   })
 // });
-
-// //運行用task，下gulp local ※gulp 4※
+// gulp 4運行用task，下gulp local 
 gulp.task('local', gulp.series('browserSync', () => {
 }));
-// //運行用task，下gulp local ※gulp 3※
+// gulp 3運行用task，下gulp local gulp 
 // gulp.task('local', cb => {
 //   runSequence(['browserSync']);
 // });
+
+
