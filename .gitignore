@@ -62,3 +62,6 @@ typings/
 
 # vscode debug settings
 .vscode
+
+#dist 產生的檔案過濾
+dist/

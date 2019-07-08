@@ -31,6 +31,20 @@ gulp.task("nodemon", cb => {
   });
 });
 
+//[gulp4寫法] browserSync負責監看template內的檔案並刷新瀏覽器
+gulp.task(
+  "browserSync",
+  gulp.series("nodemon", () => {
+    browserSync.init(null, {
+      proxy: "http://localhost:3000",
+      files: ["templates/**"],
+      browser: ["chrome"],
+      port: 5000,
+      reloadDelay: 3000
+    });
+  })
+);
+
 //清空每次執行gulp local所產生的dist檔
 gulp.task("clean", require("del").bind(null, ["dist"]));
 
@@ -52,19 +66,13 @@ gulp.task('sass', cb => {
     .pipe(gulp.dest('dist/styles'));
   return cb();
 });
-//[gulp4寫法] browserSync負責監看template內的檔案並刷新瀏覽器
-gulp.task(
-  "browserSync",
-  gulp.series("nodemon", () => {
-    browserSync.init(null, {
-      proxy: "http://localhost:3000",
-      files: ["templates/**"],
-      browser: ["chrome"],
-      port: 5000,
-      reloadDelay: 3000
-    });
-  })
-);
 
-// [gulp4寫法]local的task，任務順序為clean、ScriptsLocal、sass、browserSync
-gulp.task("local", gulp.series("clean","ScriptsLocal","sass", "browserSync", () => {}));
+//gulp.watch負責watch前端檔案
+gulp.task('build:watch', cb => {
+  gulp.watch('app/scripts/*/*.js', gulp.series('ScriptsLocal')); //JS改變就執行ScriptsLocal任務
+  gulp.watch('app/styles/*/*.sass', gulp.series('sass')); //sass改變就執行sass任務
+  cb();
+});
+
+// [gulp4寫法]local的task，任務順序為clean、ScriptsLocal、sass、build:watch、browserSync
+gulp.task("local", gulp.series("clean","ScriptsLocal","sass","build:watch", "browserSync", () => {}));
