@@ -46,9 +46,9 @@ gulp.task("ScriptsLocal", cb => {
 
 //將CSS檔案輸出到dist資料夾
 gulp.task('styles', cb => {
-  let s1 = gulp.src('app/styles/*/*.css')
+  gulp.src('app/styles/*/*.css')
     .pipe(gulp.dest('dist/styles'));
-  return merge(s1);
+  return cb();
 });
 
 //[gulp4寫法] browserSync負責監看template內的檔案並刷新瀏覽器
