@@ -1,0 +1,23 @@
+{
+  "name": "bluenet-web-example1",
+  "description": "",
+  "main": "server.js",
+  "authors": ["thiefjim <thiefjim@gmail.com>"],
+  "license": "MIT",
+  "homepage": "https://github.com/taipeitechmmslab/MMLSAB-Web-DevRoadMap",
+  "private": true,
+  "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"],
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": ["dist/css/bootstrap.css", "dist/js/bootstrap.js"],
+      "dependencies": {
+        "jquery": "*"
+      }
+    }
+  }
+}
