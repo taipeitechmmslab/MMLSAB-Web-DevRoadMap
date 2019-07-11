@@ -59,6 +59,8 @@ gulp.task("ScriptsLocal", cb => {
     .pipe($.babel())
     .pipe(plumber.stop())
     .pipe(gulp.dest("dist/scripts"));
+  gulp.src(['app/scripts/*/*.vue'])  //輸出vue檔案
+    .pipe(gulp.dest('dist/scripts'));
   return cb();
 });
 
@@ -74,8 +76,9 @@ gulp.task("sass", cb => {
 //gulp.watch負責watch前端檔案
 gulp.task("build:watch", cb => {
   gulp.watch("app/scripts/*/*.js", gulp.series("ScriptsLocal")); //JS改變就執行ScriptsLocal任務
-  gulp.watch("app/styles/*/*.sass", gulp.series("sass")); //sass改變就執行sass任務
-  cb();
+  gulp.watch('app/scripts/*/*.vue', gulp.series("ScriptsLocal")); //vue改變就執行ScriptsLocal任務
+  gulp.watch("app/styles/*/*.sass", gulp.series("sass")); //sass改變就執行sass任務  
+  return cb();
 });
 
 //自動載入bower_component檔

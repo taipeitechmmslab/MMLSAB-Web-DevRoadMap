@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node server.js",
     "local-server": "npm run bowerInstall && npm run gulpLocal",
-    "gulpLocal":"./node_modules/.bin/gulp local",
+    "gulpLocal": "./node_modules/.bin/gulp local",
     "bowerInstall": "./node_modules/.bin/bower install",
     "gulpBuild": "./node_modules/.bin/gulp build",
     "prestart": "npm run bowerInstall && npm run gulpBuild"

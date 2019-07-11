@@ -1,0 +1,18 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.js"></script>
+<script src="https://unpkg.com/http-vue-loader"></script>
+
+<div id="backstage">
+  <body-component></body-component>
+  <log-component></log-component>
+</div>
+
+<script type="text/javascript">
+  new Vue({
+    el: "#backstage",
+    components: {
+      "body-component": httpVueLoader("/scripts/backstage/backstage.vue"),
+      "log-component": httpVueLoader("/scripts/backstage/backstagelog.vue")
+    }
+  });
+  var bus = new Vue({});
+</script>
