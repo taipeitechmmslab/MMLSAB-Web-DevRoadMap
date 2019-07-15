@@ -1,6 +1,8 @@
 const path = require('path')
 const webpack = require('webpack')
 const nodeExternals = require('webpack-node-externals')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+
 module.exports = {
   entry: {
     server: './src/server/server.js',
@@ -28,5 +30,9 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.ProgressPlugin(),
+    new CleanWebpackPlugin()
+  ]
 }
