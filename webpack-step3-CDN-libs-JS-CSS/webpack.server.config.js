@@ -32,7 +32,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.ProgressPlugin(),
     new CleanWebpackPlugin()
   ]
 }

@@ -9,7 +9,7 @@ const app = express(),
   HTML_FILE = path.join(DIST_DIR, "index.html"),
   compiler = webpack(config);
 app.use(
-  webpackDevMiddleware(compiler, {
+  webpackDevMiddleware(compiler, {    
     publicPath: config.output.publicPath
   })
 );

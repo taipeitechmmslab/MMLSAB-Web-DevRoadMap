@@ -1,6 +1,7 @@
 const path = require("path")
 const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
+
 module.exports = {
   entry: {
     main: './src/index.js'
@@ -45,7 +46,7 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jQuery',
-      'window.jQuery': 'jquery',
+      'window.jQuery': 'jquery', // jQuery with Angular 1
       'window.$':'jquery'
     })
   ]
