@@ -59,7 +59,6 @@ module.exports = {
       'window.jQuery': 'jquery',
       'window.$':'jquery'
     }),    
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.HotModuleReplacementPlugin()  
   ]
 }

@@ -1,6 +1,4 @@
-module.exports = {    
-    "extends": [
-      "eslint:recommended"      
-    ],
-    "parser": "babel-eslint"
-  };
+module.exports = {
+  extends: ["eslint:recommended"],
+  parser: "babel-eslint"
+};

@@ -1,8 +1,9 @@
+/*eslint-env jquery,browser*/
 const search = () => {
     console.log($('#title').text(), 'yes'); // eslint-disable-line no-undef
     //定義getData的方法
     let getData = url =>
-    fetch(url)
+    fetch(url) 
     .then(response => response.json()) //取得回傳的json字串
     .then(json => {
         return json; //回傳json
