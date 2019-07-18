@@ -5,14 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "coverage":"jest --coverage",
     "buildDev": "webpack --mode development --config webpack.server.config.js && webpack --mode development --config webpack.dev.config.js",
     "buildProd": "webpack --mode production --config webpack.server.config.js && webpack --mode production --config webpack.prod.config.js",
     "start": "npm run buildDev && node ./dist/server.js"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"      
-    }
   },
   "keywords": [],
   "author": "",
