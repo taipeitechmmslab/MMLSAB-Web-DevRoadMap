@@ -18,3 +18,14 @@
 6. 在express當中使用ejs模板引擎增強HTML網頁。
 7. 使用bower下載前端套件並透過gulp的建置任務整合檔案。
 8. 透過vue實作backstage網頁完成相同的功能，並示範兩個vue元件之間傳遞資料。
+
+# webpack 使用webpack4 建設網頁伺服器
+1. 建立一個Express的網頁伺服器
+2. 透過Webpack，載入JS與CSS並注入HTML網頁中
+3. 透過webpack，載入JS與CSS並注入使用CDN套件的HTML網頁
+4. 透過Webpack，JS中載入bootstrap與jQuery並注入HTML網頁
+5. 分離開發版與線上版的Webpack設定，與優化線上版檔案
+6. 在Webpack中，監控檔案儲存，並自動執行webpack
+7. 在Webpack中，啟用熱加載模組，並透過Hot Reload插件推送更新到瀏覽器
+8. 在Webpack中，使用ESlint提高程式碼品質
+9. 使用jest撰寫單元測試並取得coverage報告
