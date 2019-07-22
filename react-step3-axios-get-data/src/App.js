@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
-import axios from 'axios';
+import axios from "axios";
+import { Table } from "reactstrap";
 
 class App extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class App extends React.Component {
   componentDidMount() {
     //指定網址，並執行axios的GET方法
     axios.get("https://jsonplaceholder.typicode.com/users").then(response => {
-      this.setState({userList:response.data})
+      this.setState({ userList: response.data });
     });
   }
   render() {
@@ -23,7 +24,7 @@ class App extends React.Component {
     return (
       <div>
         <h1 id="title">使用者查詢example1</h1>
-        <table id="personList" class="table table-striped">
+        <Table striped id="personList">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -45,7 +46,7 @@ class App extends React.Component {
               );
             })}
           </tbody>
-        </table>
+        </Table>
       </div>
     );
   }
