@@ -36,7 +36,7 @@ class App extends React.Component {
     return (
       <div>
         <h1 id="title">使用者查詢example1</h1>
-        <table id="personList" class="table table-striped">
+        <table id="personList" className="table table-striped">
           <thead>
             <tr>
               <th scope="col">#</th>
