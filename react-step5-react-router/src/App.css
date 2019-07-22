@@ -1,0 +1,21 @@
+#title{
+  text-align: center;
+  color: brown;
+}
+#personList > thead > tr > th {
+  color: brown;
+}
+#personList > tbody > tr > th {
+  color: red;
+}
+#personList > tbody > tr > td {
+  color: darkblue;
+}
+@media screen and (max-width: 768px){
+  #personList > tbody > tr > th {
+      color: darkblue;
+  }
+  #personList > tbody > tr > td {
+      color: red;
+  }
+}
