@@ -22,16 +22,21 @@ export default class UserInfo extends Component {
       });
   }
   componentDidMount() {
+    //第一次被掛載會執行
+    console.log('componentDidMount')
     this.getData();
   }
   componentDidUpdate(preProps, prevState) {    
     if (this.state.id !== prevState.id) {
+      console.log('componentDidUpdate')
       //因為props更新了state裡的id
       this.getData();
     }
   }
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.match.params.id !== prevState.id) {
+      console.log('getDerivedStateFromProps')
+      //更新state的資料
       return {
         id: nextProps.match.params.id
       };

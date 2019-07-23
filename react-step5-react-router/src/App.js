@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import axios from "axios";
 import { Table } from "reactstrap";
-import User from "./user/user.js";
+import User from "./user/User.js";
 
 class App extends React.Component {
   constructor(props) {
