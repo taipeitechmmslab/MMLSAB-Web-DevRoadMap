@@ -1,41 +1,27 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { Card, CardText, CardBody, CardTitle, CardSubtitle } from "reactstrap";
+import { connect } from "react-redux";
+import { fetchUser } from "./actions/userInfo";
 
-export default class UserInfo extends Component {
+class UserInfo extends Component {
   constructor(props) {
-    super(props);    
+    super(props);
     this.state = {
-      id: this.props.match.params.id,
-      userInfo: { id: "", name: "", phone: "", email: "" }
+      id: this.props.match.params.id
     };
-    this.getData = this.getData.bind(this);
-  }
-  getData() {
-    //指定網址，並執行axios的GET方法
-    axios
-      .get("https://jsonplaceholder.typicode.com/users/" + this.state.id)
-      .then(response => {
-        this.setState({
-          userInfo: response.data
-        });
-      });
   }
   componentDidMount() {
     //第一次被掛載會執行
-    console.log('componentDidMount')
-    this.getData();
+    this.props.fetchUser(this.state.id);
   }
-  componentDidUpdate(preProps, prevState) {    
+  componentDidUpdate(preProps, prevState) {
     if (this.state.id !== prevState.id) {
-      console.log('componentDidUpdate')
       //因為props更新了state裡的id
-      this.getData();
+      this.props.fetchUser(this.state.id);
     }
   }
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.match.params.id !== prevState.id) {
-      console.log('getDerivedStateFromProps')
       //更新state的資料
       return {
         id: nextProps.match.params.id
@@ -44,7 +30,16 @@ export default class UserInfo extends Component {
     return null;
   }
   render() {
-    const { name, phone, email } = this.state.userInfo;
+    const { user, loading, error } = this.props;
+    const { name, phone, email } = user;
+    if (error) {
+      return <div>Error! {error.message}</div>;
+    }
+
+    if (loading) {
+      return <div>Loading...</div>;
+    }
+
     return (
       <Card>
         <CardBody>
@@ -56,3 +51,18 @@ export default class UserInfo extends Component {
     );
   }
 }
+
+const mapDispatchToProps = {
+  fetchUser
+};
+
+const mapStateToProps = state => ({
+  user: state.userInfoReducer.user,
+  loading: state.userInfoReducer.loading,
+  error: state.userInfoReducer.error
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserInfo);

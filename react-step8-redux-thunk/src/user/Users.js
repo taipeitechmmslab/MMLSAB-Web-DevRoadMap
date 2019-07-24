@@ -1,9 +1,9 @@
 import React from "react";
-import "./Users.css";
-import axios from "axios";
 import { Table } from "reactstrap";
+import { connect } from "react-redux";
+import "./Users.css";
 import User from "./User.js";
-import GetUsersData from "./userAction";
+import { fetchUsers,removeUser } from "./actions/users";
 
 class Users extends React.Component {
   constructor(props) {
@@ -16,22 +16,23 @@ class Users extends React.Component {
     this.removeUser = this.removeUser.bind(this);
   }
   removeUser(id) {
-    const { userList } = this.state;
-    // 直接用 filter 來把資料砍掉
-    let newUsers = userList.filter(user => user.id !== id);
-    this.setState({
-      userList: newUsers
-    });
+    this.props.removeUser(id);
   }
   componentDidMount() {
-    //指定網址，並執行axios的GET方法
-    axios.get("https://jsonplaceholder.typicode.com/users").then(response => {
-      this.setState({ userList: response.data });
-    });
+    //第一次掛載執行
+    this.props.fetchUsers();
   }
   render() {
-    // 從 state 取出資料
-    let userList = this.props.userList;
+    // 從 state 取出資料    
+    const { error, loading, users } = this.props;
+
+    if (error) {
+      return <div>Error! {error.message}</div>;
+    }
+
+    if (loading) {
+      return <div>Loading...</div>;
+    }
 
     return (
       <div>
@@ -46,7 +47,7 @@ class Users extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {userList.map(user => {
+            {users.map(user => {
               // 傳回 jsx
               return <User user={user} id={user.id} remove={this.removeUser} />;
             })}
@@ -56,5 +57,18 @@ class Users extends React.Component {
     );
   }
 }
+const mapDispatchToProps = {
+  fetchUsers,
+  removeUser
+};
 
-export default Users;
+const mapStateToProps = state => ({
+  users: state.usersReducer.users,
+  loading: state.usersReducer.loading,
+  error: state.usersReducer.error
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Users);

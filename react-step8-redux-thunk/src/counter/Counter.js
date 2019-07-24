@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { increment, decrement } from "./actions";
+import { increment, decrement } from "./action";
 
 class Counter extends React.Component {
   state = { count: 0 };
