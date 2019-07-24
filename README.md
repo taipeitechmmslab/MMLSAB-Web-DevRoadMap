@@ -29,3 +29,14 @@
 7. 在Webpack中，啟用熱加載模組，並透過Hot Reload插件推送更新到瀏覽器
 8. 在Webpack中，使用ESlint提高程式碼品質
 9. 使用jest撰寫單元測試並取得coverage報告
+
+# react 使用React 架設網頁伺服器
+使用React 16.x版框架，架設網頁伺服器。學會React、React-router、Redux-react、Redux-thunk套餐。
+1. 使用Create react app工具，快速架設React的開發環境。
+2. 在React中，引入Bootstrap與jquery，。
+3. 在React的生命週期發送HTTP取得資料，改用reactstrap。
+4. 在React，建立父元件（Users）跟子元件（User），並透過props傳送資料。
+5. 在React，切換路由使用react-router，渲染不同的React元件
+6. 在React，新增Counter元件，使用Redux管理資料狀態。
+7. 在React，新增Todo元件，整合使用Redux管理資料狀態。
+8. 在React，使用Redux-thunk重寫Users與UserInfo元件，統一整合使用Redux管理資料狀態。
